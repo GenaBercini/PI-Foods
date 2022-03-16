@@ -9,32 +9,43 @@ const {
 
 const router = Router();
 
-router.get('/', async (req, res, next) => {
+router.get('/all', async (req, res, next) => {
+    try {
+        let allRecipes = await getAllRecipes();
+        res.json(allRecipes);
+    }
+    catch (e) {
+        next(e)
+    }
+})
+
+router.get('/', (req, res, next) => {
     const { name } = req.query;
     try {
         if (name) {
-            let recipeNameAPI = await getRecipeByQuery(name);
-            let recipeNameDB = await Recipe.findAll({
+            let recipeNameAPI = getRecipeByQuery(name);
+            let recipeNameDB = Recipe.findAll({
                 where: {
                     name: { [Op.substring]: name }
                 }
             });
-            if (recipeNameDB.length > 0) {
-                return res.json(recipeNameDB);
-            }
-            else if (recipeNameAPI.length > 0) {
-                return res.json(recipeNameAPI);
-            }
-            else {
-                return res.status(404).json({ message: 'Recipe Not Found' })
-            }
-        }
-        else {
-            return res.status(404).json({ message: 'Recipe Not Found' })
+            Promise.all([recipeNameAPI, recipeNameDB])
+                .then(response => {
+                    const responseAPI = response[0];
+                    const responseDB = response[1]
+
+                    if (responseAPI) {
+                        return res.json(responseAPI)
+                    }
+                    else if (responseDB) {
+                        return res.json(responseDB);
+                    }
+                    return res.status(404).json({ message: 'Recipe Not Found' })
+                })
         }
     }
     catch (e) {
-        res.status(404).json({ message: 'An error has occurred', error: e })
+        next(e);
     }
 });
 
@@ -58,8 +69,8 @@ router.get('/:id', async (req, res, next) => {
             }
 
             let recipeIdAPI = await getRecipeById(parseInt(id));
-            if (recipeIdAPI.length > 0) {
-                return res.json(recipeIdAPI)
+            if (recipeIdAPI) {
+                res.json(recipeIdAPI);
             }
             else {
                 res.status(404).json({ message: 'Recipe Not Found' });
@@ -67,7 +78,7 @@ router.get('/:id', async (req, res, next) => {
         }
     }
     catch (e) {
-        res.status(404).json({ message: 'An error has occurred', error: e })
+        next(e);
     }
 });
 
@@ -95,7 +106,7 @@ router.post('/', async (req, res, next) => {
         res.send('Successfully created recipe');
     }
     catch (e) {
-        res.status(404).json({ message: 'An error has occurred', error: e });
+        next(e);
     }
 });
 
