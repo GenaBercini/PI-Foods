@@ -17,12 +17,14 @@ module.exports = (sequelize) => {
     },
     healthScore: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     spoonacularScore: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     summary: {
       type: DataTypes.TEXT,
@@ -32,6 +34,11 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    createDB: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    }
   });
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Card.css'
 
 export default function Card(props) {
     let recipeDiets = []
@@ -8,19 +9,21 @@ export default function Card(props) {
     }
     let diets = recipeDiets.length > 0 ? recipeDiets : props.diets;
     return (
-        <div>
-            <img src={props.img} alt={props.title} width="280px" height="200px"/>
-            <div>
-                <span>{props.title}</span>
-                <div>
+        <div className="card">
+            <div className="card-text">
+                <span className="card-title">{props.title}</span>
+                <span className="card-score"><b>Score: </b>{props.spoonacularScore}</span>
+                <div className="card-diets">
+                <span><b>Diets</b></span>
                 {
                     diets ?
                         diets.map(e => (
-                            <span>{e}</span>
+                            <span key={e}>{e}</span>
                         )) : ""
                 }
                 </div>
-                <Link to={`/recipes/${props.id}`}><button>More</button></Link>
+                <img className="card-image" src={props.img} alt={props.title}/>
+                <Link to={`/recipes/${props.id}`}><button className="card-btn">More</button></Link>
             </div>
         </div>
     )

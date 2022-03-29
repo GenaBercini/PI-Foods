@@ -4,17 +4,28 @@ const router = Router();
 
 router.get('/', async (req, res, next) => {
     try {
-        await Diets.bulkCreate([
-            {name: "gluten free"},
-            {name: "lacto ovo vegetarian"},
-            {name: "vegan"},
-            {name: "pescatarian"},
-            {name: "paleolithic"},
-            {name: "primal"},
-            {name: "fodmap friendly"},
-            {name: "dairy free"},
-            {name: "whole 30"},
-        ]);
+        let diets = [
+            "gluten free",
+            "lacto ovo vegetarian",
+            "vegan",
+            "pescatarian",
+            "paleolithic",
+            "primal",
+            "fodmap friendly",
+            "dairy free",
+            "whole 30",
+            "ketogenic",
+        ];
+
+        diets.forEach((name) => {
+            Diets.findOrCreate({
+                where: {name: name},
+                defaults: {
+                    name: name,
+                }
+            });
+        });
+
         let allDiets = await Diets.findAll();
         res.json(allDiets);
 

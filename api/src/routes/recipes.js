@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
             let recipeNameAPI = getRecipeByQuery(name);
             let recipeNameDB = Recipe.findAll({
                 where: {
-                    title: { [Op.substring]: name }
+                    title: { [Op.iLike]: `%${name}%`}
                 },
                 include: Diets,
             });
@@ -25,13 +25,12 @@ router.get('/', (req, res, next) => {
                     const responseAPI = response[0];
                     const responseDB = response[1]
 
-                    if (responseAPI) {
+                    if (responseAPI.length > 0) {
                         return res.json(responseAPI)
                     }
                     else if (responseDB) {
                         return res.json(responseDB);
                     }
-                    return res.status(404).json({ message: 'Recipe Not Found' })
                 })
         }
         else {
@@ -89,8 +88,7 @@ router.post('/', async (req, res, next) => {
             spoonacularScore,
             image,
             summary,
-            steps,
-            diets
+            steps
         });
 
         let dietDB = await Diets.findAll({
@@ -103,7 +101,7 @@ router.post('/', async (req, res, next) => {
         res.send('Successfully created recipe');
     }
     catch (e) {
-        next(e);
+        res.status(404).json({msg:"Error", error: e});
     }
 });
 

@@ -1,0 +1,37 @@
+.container {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.container-numbers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    border-radius: 30px;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.number {
+    background-color: rgba(250,128,114, 0.8);
+    box-shadow: black 1px 1px 10px 1px;
+    border: 3px solid salmon;
+    color: white;
+    text-shadow: black 1px 1px 3px;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: .2s;
+}
+
+.number:hover {
+    border: 3px solid white;
+    box-shadow: salmon 2px 2px 10px 2px;
+    color: white;  
+    background-color: salmon;
+}

@@ -7,13 +7,11 @@ export default function LandingPage() {
         <div className="landing-page">
             <div className="container-join">
                 <div className="text">
-                    <h1>Welcome</h1>
-                    <h1>To</h1>
-                    <h1>Gena Foods</h1>
+                    <h1>Be Happy Cooking!</h1>
                 </div>
-                <div className="landing-page-button">
+                <div>
                     <Link to='/home'>
-                        <button className="button">¡JOIN!</button>
+                        <button className="button">JOIN NOW</button>
                     </Link>
                 </div>
             </div>
