@@ -47,7 +47,7 @@ export default function foodReducer(state = initialState, action) {
                 diets: action.payload,
             }
         case FILTER_BY_SCORE:
-            let scoreArray = action.payload === 'LOWER' ?
+            let scoreArray = action.payload === 'Lowerest' ?
             state.filtered.sort((a,b) => {
                 if(a.spoonacularScore > b.spoonacularScore) return 1;
                 if(b.spoonacularScore > a.spoonacularScore) return -1;
@@ -62,7 +62,7 @@ export default function foodReducer(state = initialState, action) {
                 filtered: scoreArray,
             } 
         case FILTER_BY_NAME:
-            let nameArray = action.payload ==='ASC' ?
+            let nameArray = action.payload ==='A-Z' ?
             state.filtered.sort((a, b) => {
                 if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
                 if (b.title.toLowerCase() > a.title.toLowerCase()) return -1;

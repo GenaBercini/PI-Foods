@@ -11,7 +11,7 @@ const {
 module.exports = {
     getAllRecipes: () => {
         try {
-            let responseAPI = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`);
+            let responseAPI = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
             let responseDB = Recipe.findAll({
                 include: {
                     model: Diets,
@@ -38,7 +38,7 @@ module.exports = {
     },
     getRecipeByQuery: async (query) => {
         try {
-            const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`);
+            const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
             const recipeFound = response.data.results.filter(element => element.title.toLowerCase().includes(query.toLowerCase()));
             return recipeFound;
         }

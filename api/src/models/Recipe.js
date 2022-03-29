@@ -25,6 +25,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.TEXT,
+      defaultValue: 'https://thumbs.dreamstime.com/b/black-woman-s-hands-cutting-invisible-object-empty-plate-restaurant-food-concept-black-female-hands-cutting-invisible-162178346.jpg',
     },
     summary: {
       type: DataTypes.TEXT,

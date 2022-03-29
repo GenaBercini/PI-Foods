@@ -13,14 +13,18 @@ import './home.css';
 
 export default function Home() {
     let navigate = useNavigate();
+    let [filter, setFilter] = useState({
+        score: 'Sort by Scores',
+        diet:'Sort by Diets',
+        alphabetically:'Sort Alphabetically'
+    })
     let recipes = useSelector((state) => state.filtered);
     let loading = useSelector((state) => state.loading);
     let totalPost = recipes.length;
     let [order, setOrder] = useState('');
     let dispatch = useDispatch();
-    //---------------------Pagination-------------------------------//
     let [currentPage, setCurrentPage] = useState(1);
-    let [postPerPage] = useState(4);
+    let [postPerPage] = useState(9);
     const lastRecipe = currentPage * postPerPage;
     const firstRecipe = lastRecipe - postPerPage;
     const currentRecipe = recipes.slice(firstRecipe, lastRecipe);
@@ -40,25 +44,41 @@ export default function Home() {
     function handleName(e) {
         e.preventDefault();
         dispatch(filterByName(e.target.value));
-        setOrder(e.target.value)
+        setFilter({
+            ...filter,
+            alphabetically: e.target.value,
+        });
     };
 
     function handleScore(e) {
         e.preventDefault();
         dispatch(filterByScore(e.target.value));
-        setOrder(e.target.value)
+        setCurrentPage(1)
+        setFilter({
+            ...filter,
+            score: e.target.value,
+        });
     }
 
     function handleDiets(e) {
         e.preventDefault();
         dispatch(filterByDiets(e.target.value));
-        setOrder(e.target.value)
+        setCurrentPage(1)
+        setFilter({
+            ...filter,
+            diet: e.target.value,
+        });
     }
 
     function handleReset(e) {
         e.preventDefault();
         dispatch(getRecipes());
-        setOrder(e.target.value);
+        setCurrentPage(1)
+        setFilter({
+            score: 'Sort by Diets',
+            diet:'Sort by Scores',
+            alphabetically:'Sort Alphabetically'
+        });
     }
 
     function handlePage(e) {
@@ -71,18 +91,18 @@ export default function Home() {
                 <img src={Logo} onClick={handleLanding} className='img-search' alt='logo' />
                 <button type='reset' className='btn' onClick={handleReset}>Reload</button>
                 <button type='button' onClick={handleCreate} className='btn-recipe btn'>New recipe</button>
-                <select defaultValue='default' onChange={handleName}>
-                    <option disabled value='default'>Sort Alphabetically</option>
-                    <option value='ASC'>A-Z</option>
-                    <option value='DESC'>Z-A</option>
+                <select value={filter.alphabetically} onChange={handleName}>
+                    <option disabled >{filter.alphabetically}</option>
+                    <option value='A-Z'>A-Z</option>
+                    <option value='Z-A'>Z-A</option>
                 </select>
-                <select defaultValue='default' onChange={handleScore}>
-                    <option disabled value='default'>Sort by Scores</option>
-                    <option value="HIGH">Highest</option>
-                    <option value="LOWER">Lowerest</option>
+                <select value={filter.score} onChange={handleScore}>
+                    <option disabled >{filter.score}</option>
+                    <option value="Highest">Highest</option>
+                    <option value="Lowerest">Lowerest</option>
                 </select>
-                <select defaultValue='default' onChange={handleDiets}>
-                    <option disabled value='default'>Sort by Diets</option>
+                <select value={filter.diet} onChange={handleDiets}>
+                    <option disabled >{filter.diet}</option>
                     <option value="All">All</option>
                     <option value="gluten free">Gluten Free</option>
                     <option value="dairy free">Dairy Free</option>

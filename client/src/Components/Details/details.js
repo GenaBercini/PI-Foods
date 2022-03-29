@@ -20,8 +20,7 @@ export default function DetailRecipe() {
     let diets = details.createDB ? details.diets.map(e => e.name) : details.diets;
     let instructions = details.analyzedInstructions && details.analyzedInstructions.length > 0 ? details.analyzedInstructions[0].steps.map(e => e.step) : details.steps;
     let founded = details.name ? false : true;
-    if (details) {
-        return (
+    return (
             <div className='details'>
                 {
                     loading ? (<div className='details-loading'>
@@ -56,4 +55,3 @@ export default function DetailRecipe() {
             </div>
         )
     }
-}

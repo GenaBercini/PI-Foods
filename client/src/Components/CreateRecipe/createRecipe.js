@@ -172,8 +172,8 @@ export default function CreateRecipe() {
                 </div>
                 <div>
                     <div>Diets Options </div>
-                    <select defaultValue='default' onChange={onCheck}>
-                        <option disabled value='default'>Select Diet</option>
+                    <select value={input.diets.length > 0 ? 'Select Another' : 'Select Diet'} onChange={onCheck}>
+                        <option disabled>{input.diets.length > 0 ? 'Select Another' : 'Select Diet'}</option>
                         {
                             dietTypes.map(e => (
                                 <option value={e.name}>{e.name}</option>
