@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { createRecipe, getDiets } from '../../Reducer/actions';
+import { createRecipe, getDiets, getRecipes } from '../../Reducer/actions';
 import Footer from '../Footer/footer.js';
 import './createRecipe.css';
 
@@ -9,11 +9,17 @@ export default function CreateRecipe() {
 
     let navigate = useNavigate();
 
+    let recipes = useSelector((state) => state.recipes)
+
     let dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getDiets());
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getRecipes());
+    }, [dispatch])
 
     let dietTypes = useSelector((state) => state.diets)
 
@@ -27,7 +33,7 @@ export default function CreateRecipe() {
         image: "",
     });
     let [error, setError] = useState({
-        title: "Invalid Name, please use at least one letter at the beginning",
+        title: "Invalid Name or this name already exist, please use at least one letter at the beginning",
         summary: "Invalid Summary, please use at least one letter at the beginning",
         healthScore: "Invalid Health Score, please write a number between 0 and 100",
         spoonacularScore: "Invalid Score, please write a number between 0 and 100",
@@ -103,7 +109,7 @@ export default function CreateRecipe() {
 
     function validate(input) {
         let errorData = {
-            title: "Invalid Name, please use at least one letter at the beginning",
+            title: "Invalid Name or this name already exist, please use at least one letter at the beginning",
             summary: "Invalid Summary, please use at least one letter at the beginning",
             healthScore: "Invalid Health Score, please write a number between 0 and 100",
             spoonacularScore: "Invalid Score, please write a number between 0 and 100",
@@ -113,7 +119,8 @@ export default function CreateRecipe() {
         }
 
         if (/^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$/.test(input.title.trim()) && input.title.trim().length > 0) {
-            delete errorData.title;
+            let recipeExists = recipes.filter(e => e.title.toLowerCase() === input.title.toLowerCase());
+            recipeExists.length === 0 && delete errorData.title;
         }
         if (typeof input.image === 'string' && input.image.trim().length > 0) {
             delete errorData.image;

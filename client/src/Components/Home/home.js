@@ -48,37 +48,38 @@ export default function Home() {
             ...filter,
             alphabetically: e.target.value,
         });
+        setCurrentPage(1)
     };
 
     function handleScore(e) {
         e.preventDefault();
         dispatch(filterByScore(e.target.value));
-        setCurrentPage(1)
         setFilter({
             ...filter,
             score: e.target.value,
         });
+        setCurrentPage(1)
     }
 
     function handleDiets(e) {
         e.preventDefault();
         dispatch(filterByDiets(e.target.value));
-        setCurrentPage(1)
         setFilter({
             ...filter,
             diet: e.target.value,
         });
+        setCurrentPage(1)
     }
 
     function handleReset(e) {
         e.preventDefault();
         dispatch(getRecipes());
-        setCurrentPage(1)
         setFilter({
             score: 'Sort by Diets',
             diet:'Sort by Scores',
             alphabetically:'Sort Alphabetically'
         });
+        setCurrentPage(1)
     }
 
     function handlePage(e) {
