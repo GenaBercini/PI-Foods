@@ -9,11 +9,12 @@ export const LOADING = "LOADING";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
 export const FILTER_BY_SCORE = "FILTER_BY_SCORE";
 export const FILTER_BY_DIETS = "FILTER_BY_DIETS";
+export const DELETE_RECIPE = "DELETE_RECIPE";
 
 export function getRecipes() {
     return function(dispatch) {
         dispatch({type: LOADING})
-        axios.get('http://localhost:3001/recipes')
+        axios.get('/recipes')
         .then(response => {
             return dispatch({type: GET_RECIPES, payload: response.data});
         })
@@ -21,10 +22,19 @@ export function getRecipes() {
     }
 };
 
+// export function getAllRecipes() {
+//     return function() {
+//         axios.post('http://localhost:3001/recipes/create')
+//         .then(response => {
+//             return response;
+//         })
+//     }
+// }
+
 export function getRecipeById(id) {
     return function(dispatch) {
         dispatch({type: LOADING})
-        axios.get(`http://localhost:3001/recipes/${id}`)
+        axios.get(`/recipes/${id}`)
         .then(response => {
             return dispatch({type: GET_RECIPE_BY_ID, payload: response.data});
         })
@@ -35,7 +45,7 @@ export function getRecipeById(id) {
 export function getRecipeByQuery(query) {
     return function(dispatch) {
         dispatch({type: LOADING})
-        axios.get(`http://localhost:3001/recipes?name=${query}`)
+        axios.get(`/recipes?name=${query}`)
         .then(response => {
             return dispatch({type: GET_RECIPES_BY_QUERY, payload: response.data})
         })
@@ -45,17 +55,30 @@ export function getRecipeByQuery(query) {
 
 export function getDiets() {
     return function(dispatch) {
-        axios.get(`http://localhost:3001/types`)
+        axios.get(`/types`)
         .then(response => {
             return dispatch({type: GET_DIETS, payload: response.data})
         })
+        .catch(error => console.log(error))
     }
 }
 
 export function createRecipe(input) {
-    return async function() {
-        let response = await axios.post('http://localhost:3001/recipes', input);
-        return response;
+    return function() {
+        axios.post('/recipes',input)
+        .then((response) => {
+            return response.json;
+        })
+    }
+}
+
+export function deleteRecipe(id) {
+    return function() {
+        axios.delete(`/recipes/delete/${id}`)
+        .then(response => {
+            return response;
+        })
+        .catch(error => console.log(error))
     }
 }
 

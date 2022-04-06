@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { getRecipeByQuery } from '../../Reducer/actions';
 import './searchBar.css';
 
-export default function SearchBar() {
+export default function SearchBar({setCurrentPage}) {
     let [search, setSearch] = useState('');
 
     let dispatch = useDispatch();
 
     function onChange(e){
         e.preventDefault();
-        setSearch(e.target.value)
+    /^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$/.test(e.target.value.trim()) && setSearch(e.target.value);
     }
 
     function onSubmit(e) {
@@ -19,6 +19,7 @@ export default function SearchBar() {
             alert('Please write something')
         }
         dispatch(getRecipeByQuery(search));
+        setCurrentPage(1);
         setSearch('');
     }
 

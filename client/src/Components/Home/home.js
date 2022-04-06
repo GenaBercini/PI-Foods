@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from "../SearchBar/searchBar";
+import Error from '../Error/error'
 import { useNavigate } from "react-router-dom";
-import { filterByName, filterByScore, getRecipes, filterByDiets } from '../../Reducer/actions';
+import { filterByName, filterByScore, getRecipes, filterByDiets, getDiets} from '../../Reducer/actions';
 import Logo from "../../Utils/receta.png"
-import notFounded from "../../Utils/notfounded.png";
 import Loading from '../Loading/loading';
 import Card from '../Cards/Card.js';
 import Footer from '../Footer/footer';
@@ -21,7 +21,6 @@ export default function Home() {
     let recipes = useSelector((state) => state.filtered);
     let loading = useSelector((state) => state.loading);
     let totalPost = recipes.length;
-    let [order, setOrder] = useState('');
     let dispatch = useDispatch();
     let [currentPage, setCurrentPage] = useState(1);
     let [postPerPage] = useState(9);
@@ -31,6 +30,8 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getRecipes());
+        dispatch(getDiets());
+        // dispatch(getAllRecipes())
     }, [dispatch]);
 
     function handleLanding() {
@@ -75,9 +76,9 @@ export default function Home() {
         e.preventDefault();
         dispatch(getRecipes());
         setFilter({
-            score: 'Sort by Diets',
-            diet:'Sort by Scores',
-            alphabetically:'Sort Alphabetically'
+            score: 'Sort by Scores',
+            diet: 'Sort by Diets',
+            alphabetically: 'Sort Alphabetically'
         });
         setCurrentPage(1)
     }
@@ -116,7 +117,7 @@ export default function Home() {
                     <option value="whole 30">Whole30</option>
                     <option value="Ketogenic">Ketogenic</option>
                 </select>
-                <SearchBar />
+                <SearchBar setCurrentPage={setCurrentPage}/>
             </div>
 
             <div className='container-cards'>
@@ -124,7 +125,7 @@ export default function Home() {
                     loading ? (<Loading />)
                         : recipes.length > 0 ? (
                             <div className='container'>
-                                <Pagination postPerPage={postPerPage} totalPost={totalPost} handlePage={handlePage} />
+                                <Pagination currentPage={currentPage} postPerPage={postPerPage} totalPost={totalPost} handlePage={handlePage} />
                                 <div className='cards'>
                                     {
                                         currentRecipe?.map((e) => {
@@ -135,7 +136,7 @@ export default function Home() {
                                                     spoonacularScore={e.spoonacularScore}
                                                     title={e.title}
                                                     img={e.image}
-                                                    diets={e.diets} />
+                                                    diets={e.diets}/>
                                             )
                                         })
                                     }
@@ -145,10 +146,7 @@ export default function Home() {
                         )
                             :
                             (
-                                <div className='error-recipe'>
-                                    <img src={notFounded} alt='notFound' />
-                                    <p>Recipe Does Not Exist</p>
-                                </div>
+                                <Error message='Recipe Does Not Exist'/>
                             )
                 }
             </div>

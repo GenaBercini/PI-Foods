@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createRecipe, getDiets, getRecipes } from '../../Reducer/actions';
+import imgDefault from '../../Utils/default.png';
 import Footer from '../Footer/footer.js';
 import './createRecipe.css';
 
@@ -43,6 +44,11 @@ export default function CreateRecipe() {
     });
 
     let [button, SetButton] = useState(true);
+
+    function handleBack(e) {
+        e.preventDefault()
+        navigate('/home');
+    }
 
     function onSubmit(e) {
         e.preventDefault()
@@ -147,6 +153,7 @@ export default function CreateRecipe() {
     return (
         <div className='form-div'>
             <form className='form' onSubmit={onSubmit}>
+            <div className='column-one'>
                 <div>
                     <div>Name</div>
                     <input
@@ -160,21 +167,29 @@ export default function CreateRecipe() {
                 <div>
                     <div>Health Level</div>
                     <input
-                        type="text"
+                        type="range"
                         value={input.healthScore}
                         placeholder="Health"
                         name="healthScore"
+                        min='0'
+                        max='100'
+                        step='1'
                         onChange={onChange} />
+                    <div>{input.healthScore ? input.healthScore : 50}</div>
                     <p className='danger'>{error.healthScore}</p>
                 </div>
                 <div>
                     <div>Score</div>
                     <input
-                        type="text"
+                        type="range"
                         value={input.spoonacularScore}
                         placeholder="Score"
                         name="spoonacularScore"
+                        min='0'
+                        max='100'
+                        step='1'
                         onChange={onChange} />
+                    <div>{input.spoonacularScore ? input.spoonacularScore : 50}</div>
                     <p className='danger'>{error.spoonacularScore}</p>
                 </div>
                 <div>
@@ -187,7 +202,6 @@ export default function CreateRecipe() {
                             ))
                         }
                     </select>
-                    <p className='danger'>{error.diets}</p>
                     <div className='diets-btn'>
                         {
                             input.diets.map(e => (
@@ -197,8 +211,10 @@ export default function CreateRecipe() {
                             ))}
                     </div>
                 </div>
+                <p className='danger'>{error.diets}</p>
+                </div>
+                <div className='column-two'>
                 <div>
-                    <div className={input.image && 'image'}>
                     <div>
                         <div>Image</div>
                         <input
@@ -208,7 +224,8 @@ export default function CreateRecipe() {
                         name="image"
                         onChange={onChange} />
                     </div>
-                    <img src={input.image}/>
+                    <div className='image'>
+                    <img src={input.image ? input.image : imgDefault} alt='imgForm'/>
                     </div>
                     <p className='danger'>{error.image}</p>
                 </div>
@@ -230,13 +247,14 @@ export default function CreateRecipe() {
                         placeholder="Steps"
                         name="steps"
                         onChange={onChange}
-                        cols="80"
+                        cols="60"
                         rows="10" />
                     <p className='danger'>{error.steps}</p>
                 </div>
-                <div className='div-btn'>
-                    <button disabled={button} className={button ? 'form-btn-disable' : 'form-btn'} type="submit">Create</button>
-                    <Link to='/home' className='link-back-btn'><button className='back-btn'>Back</button></Link>
+                </div>
+                <div className='form-btn'>
+                    <button disabled={button} className={button ? 'btn-disable' : 'btn-form'} type="submit">Create</button>
+                    <button type='button' className='btn-form' onClick={handleBack}>Back</button>
                 </div>
             </form>
             <Footer />

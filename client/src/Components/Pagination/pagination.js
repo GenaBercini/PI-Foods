@@ -1,7 +1,7 @@
 import React from 'react';
 import './pagination.css'
 
-export default function Pagination({totalPost, postPerPage, handlePage}) {
+export default function Pagination({totalPost, postPerPage, handlePage, currentPage}) {
     const pageNumbers = [];
 
     for(let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
@@ -12,7 +12,7 @@ export default function Pagination({totalPost, postPerPage, handlePage}) {
         <div className='container'>
             <ul className='container-numbers'>
                 {pageNumbers.map(n => (
-                    <li key={n} className='number' onClick={() => handlePage(n)}>
+                    <li key={n} className={currentPage === n ? 'number-active' : 'number'} onClick={() => handlePage(n)}>
                         <div>{n}</div>
                     </li>
                 ))}

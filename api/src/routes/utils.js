@@ -2,21 +2,34 @@ const axios = require('axios');
 const { Recipe, Diets } = require('../db.js');
 const {
     API_KEY
-  } = process.env;
+} = process.env;
 module.exports = {
+    getAllRecipeForApi:async () => {
+        let responseAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+        return responseAPI.data.results;
+    },
     getAllRecipes: () => {
         try {
-            let responseAPI = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+            //--WHIT API--
+            // let responseAPI = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+            // let responseDB = Recipe.findAll({
+            //     include: {
+            //         model: Diets,
+            //     }
+            // });
+            // return Promise.all([responseAPI, responseDB])
+            //     .then(resp => {
+            //         const [respAPI, respDB] = resp
+            //         return [...respAPI.data.results, ...respDB];
+            //     });
+
+            //--WITHOUT API--
             let responseDB = Recipe.findAll({
                 include: {
                     model: Diets,
                 }
             });
-            return Promise.all([responseAPI, responseDB])
-                .then(resp => {
-                    const [respAPI, respDB] = resp
-                    return [...respAPI.data.results, ...respDB];
-                });
+            return responseDB;
         }
         catch (e) {
             return e;

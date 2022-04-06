@@ -1,114 +1,106 @@
 .details {
-    height: 85vh;
-}
-
-.details-loading {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 100px;
-}
-
-.details-card {
-    width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
+    position: relative;
+    background-color: rgba(250,128,114, 0.8);
+    width: 80vw;
     height: 90vh;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border: 5px solid salmon;
-    border-radius: 30px;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: rgba(245, 162, 153, 0.8);
-}
-
-.details-img-btn {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.detals-image {
-    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50px;
     border: 2px solid salmon;
     border-radius: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: black 2px 2px 10px 2px;
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: black 1px 1px 20px 1px;
 }
 
-.details-btn {
-    font-size: larger;
-    font-weight: bolder;
-    display: flex;
-    width: 20%;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    background-color: salmon;
+.details-card img {
+    display: inline;
+    position: fixed;
+    width: 400px;
+    max-width: 400px;
+    right: 72vw;
+    top: 10px;
+    border: 2px solid salmon;
+    border-radius: 35px;
+    box-shadow: black 1px 1px 10px 1px;
+}
+
+.details-btn{
+    font-size: 20px;
+    display: inline;
+    position: fixed;
+    height: 30px;
+    width: 50px;
+    left: 86vw;
+    top: 70px;
     border-radius: 30px;
-    color: white;
-    text-shadow: rgb(102, 52, 52) 2px 2px 3px;
-    border: 2px solid rgb(209, 110, 97);
-    transition: .3s;
-    text-decoration: none;
+    border: 2px solid salmon;
+    font-weight: bolder;
+    text-shadow: salmon 1px 1px 1px;
+    transition: 0.2s;
 }
 
-.details-btn:hover {
-    background-color: rgb(248, 224, 221);
-    color: rgb(156, 87, 87);
-    text-shadow: white 2px 2px 3px;
-    cursor: pointer;
-}
-
-.details-text {
-    grid-column: 2;
-    width: 100vh;
+.title {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40vw;
+    margin-right: auto;
+    margin-left: auto;
+
 }
 
 .text-title {
-    text-shadow: white 1px 1px 2px;
+    text-shadow: white 2px 2px 5px;
 }
 
-.summary {
-    width: 90vh;
+.details-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 90px 50px 50px 200px 1fr;
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.details-diets {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .details-delete {
+    position: absolute;
+    background-color: rgb(172, 99, 91);
+    color: white;
+    font-weight: bolder;
+    text-shadow: rgb(177, 32, 32) 1px 1px 1px;
+    border: 2px solid salmon;
+    border-radius: 30px;
+    width: 150px;
+    height: 30px;
+    bottom: 10px;
+    left: 700px;
+    transition: 0.2s;
+} */
 
 a {
     color: black;
 }
 
-.error-recipe {
-    display: flex;
-    font-size: x-large;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgb(0, 0, 0);
-    text-shadow: red 2px 2px 5px;
-    box-shadow: black 1px 1px 10px 2px;
-    border: 2px solid salmon;
-    border-radius: 30px;
-    width: 20%;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-}
+/* .details-delete:hover {
+    background-color: red;
+    border:2px solid rgb(253, 191, 191);
+} */
 
-.error-recipe img {
-    width: 80px;
-    border-radius: 50%;
-    padding: 10px;
-    border: 2px solid salmon;
-    box-shadow: black 1px 2px 10px 2px;
-}
-
-.steps {
-    width: 90vh;
+.details-btn:hover {
+    background-color: salmon;
+    text-shadow: black 1px 1px 1px;
+    border:2px solid white;
+    color: white;
+    font-weight: bolder;
 }

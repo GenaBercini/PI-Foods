@@ -12,6 +12,8 @@
     border-radius: 50px 50px 0px 0px;
     border: 2px solid  salmon;
     height: 50px;
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: large;
 }
 
 .footer-logo {

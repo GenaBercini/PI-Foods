@@ -1,57 +1,104 @@
-import { React, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeById } from '../../Reducer/actions';
+import React from 'react';
+import { connect } from 'react-redux';
+import { getRecipeById, deleteRecipe } from '../../Reducer/actions';
 import Loading from '../Loading/loading';
-import notFounded from '../../Utils/notfounded.png'
-import './details.css'
+import Error from '../Error/error'
+import './details.css';
 
-export default function DetailRecipe() {
-    let dispatch = useDispatch();
-    let { id } = useParams();
+export class DetailRecipe extends React.Component {
+    constructor(props) {
+        super(props);
+        // this.handleDelete = this.handleDelete.bind(this)
+        this.handleBack = this.handleBack.bind(this)
+    }
 
-    useEffect(() => {
-        dispatch(getRecipeById(id))
-    }, [id, dispatch]);
+    componentDidMount() {
+        let id = this.props.id
+        this.props.getRecipeById(id)
+    }
 
-    let details = useSelector((state) => state.recipesDetail);
-    let loading = useSelector((state) => state.loading);
-
-    let diets = details.createDB ? details.diets.map(e => e.name) : details.diets;
-    let instructions = details.analyzedInstructions && details.analyzedInstructions.length > 0 ? details.analyzedInstructions[0].steps.map(e => e.step) : details.steps;
-    let founded = details.name ? false : true;
-    return (
-            <div className='details'>
+    // handleDelete(e) {
+    //     e.preventDefault();
+    //     this.props.deleteRecipe(e.target.value);
+    //     alert('Successfully deleted recipe')
+    //     this.props.navigate('/home')
+    // }
+    handleBack(e) {
+        e.preventDefault();
+        this.props.navigate('/home')
+    }
+    render() {
+        let diets;
+        let instructions;
+        let founded;
+        if (this.props.details) {
+            diets = this.props.details.createDB ? this.props.details.diets.map(e => e.name) : this.props.details.diets;
+            instructions = this.props.details.analyzedInstructions && this.props.details.analyzedInstructions.length > 0 ?
+                this.props.details.analyzedInstructions[0].steps.map(e => e.step) : this.props.details.steps;
+            founded = this.props.details.name ? false : true;
+        }
+        return (
+            <div>
                 {
-                    loading ? (<div className='details-loading'>
-                        <Loading />
-                    </div>)
+                    this.props.loading ? (<Loading />)
                         : founded ? (
-
-                            <div className='details-card'>
-                                <div className='details-img-btn'>
-                                    <img className='detals-image' src={details.image} alt={details.title}/>
-                                    <Link className='details-btn' to={'/home'}><div>BACK</div></Link>
-                                </div>
-                                <div className='details-text'>
-                                    <h1 className='text-title'>{details.title}</h1>
-                                    <p><b className='text-title'>Diets: </b>{diets}</p>
-                                    <p><b className='text-title'>Summary</b></p>
-                                    <div className='summary' dangerouslySetInnerHTML={{ __html: details.summary }}></div>
-                                    <p className='health'><b className='text-title'>Health Score: </b>{details.healthScore}</p>
-                                    <p className='score'><b className='text-title'>Food Score: </b>{details.spoonacularScore}</p>
-                                    <p className='steps'><b className='text-title'>Instructions: </b>{instructions}</p>
+                            <div className='details'>
+                                <div className='details-card'>
+                                    <img className='detals-image' src={this.props.details.image} alt={this.props.details.title} />
+                                    <button className='details-btn' onClick={this.handleBack}>X</button>
+                                    <div className='details-text'>
+                                        <div className='details-div'>
+                                            <h1 className='text-title title'>{this.props.details.title}</h1>
+                                        </div>
+                                        <div className='details-div'>
+                                            <p><b className='text-title'>Diets</b></p>
+                                            <div className='details-diets'>{diets?.map(e => `${e}, `)}</div>
+                                        </div>
+                                        <div className='details-div-num'>
+                                            <p className='health'><b className='text-title'>Health Score: </b>{this.props.details.healthScore}</p>
+                                        </div>
+                                        <div className='details-div'>
+                                            <p className='score'><b className='text-title'>Food Score: </b>{this.props.details.spoonacularScore}</p>
+                                        </div>
+                                        <div className='details-div'>
+                                            <p><b className='text-title'>Summary</b></p>
+                                            <div className='summary' dangerouslySetInnerHTML={{ __html: this.props.details.summary }}></div>
+                                        </div>
+                                        <div className='details-div'>
+                                            <p><b className='text-title'>Instructions</b></p>
+                                            <div className='steps'>{instructions ? instructions : 'Probably that does not has instructions'}</div>
+                                        </div>
+                                    </div>
+                                    {/* {this.props.details.createDB && <button className='details-delete' value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
                                 </div>
                             </div>
                         )
-                            :
-                            (
-                                <div className='error-recipe'>
-                                    <img src={notFounded} alt='notFound'/>
-                                    <p>Details Not Exist For That</p>
-                                </div>
+                            : (
+                                <Error message='Details Not Exist For That' />
                             )
+
                 }
             </div>
         )
     }
+}
+
+export function mapDispatchToProps(dispatch) {
+    return {
+        getRecipeById: (id) => {
+            dispatch(getRecipeById(id));
+        },
+        deleteRecipe: (id) => {
+            dispatch(deleteRecipe(id));
+        }
+    }
+}
+
+export function mapStateToProps(state) {
+    return {
+        details: state.recipesDetail,
+        loading: state.loading
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailRecipe)

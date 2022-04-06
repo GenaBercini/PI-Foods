@@ -80,8 +80,7 @@ export default function foodReducer(state = initialState, action) {
         case FILTER_BY_DIETS:
             const dietsFiltered = action.payload === "All"
             ? state.recipes
-            : state.filtered.filter(e => e.diets.includes(action.payload) || e.diets.map((e) => e.name).includes(action.payload)
-            );
+            : state.filtered.filter(e => e.diets.includes(action.payload) || e.diets.map((e) => e.name).includes(action.payload));
             return {
                 ...state,
                 filtered: dietsFiltered,

@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://thumbs.dreamstime.com/b/black-woman-s-hands-cutting-invisible-object-empty-plate-restaurant-food-concept-black-female-hands-cutting-invisible-162178346.jpg',
+      allowNull: true,
     },
     summary: {
       type: DataTypes.TEXT,
@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     },
     steps: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     createDB: {
       type: DataTypes.BOOLEAN,
