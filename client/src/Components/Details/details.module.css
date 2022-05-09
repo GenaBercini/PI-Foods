@@ -5,17 +5,19 @@
     justify-content: center;
     align-items: center;
     width: 1500px;
-    height: 800px;
+    min-height: 940px;
+    height:fit-content;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 20px;
     border: 2px solid salmon;
     border-radius: 30px;
     box-shadow: black 1px 1px 20px 1px;
 }
 
 .detailsHead {
-    height: 200px;
+    height: fit-content;
+    margin-top: 20px;
     width: 1400px;
     display: flex;
     flex-flow: row wrap;
@@ -68,6 +70,14 @@
     flex-flow: column wrap;
 }
 
+.stepInfoContainer {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+}
+
 .detailsTitle {
     display: flex;
     flex-direction: row;
@@ -118,13 +128,14 @@ a {
     .detailsContainer {
         width: 370px;
         height: fit-content;
+        min-height: 800px;
         margin-top: 10px;
     }
     
     .detailsHead {
-        margin-top: 20px;
-        height: 300px;
-        width: 200px;
+        margin-top: 10px;
+        height:fit-content;
+        width: 350px;
         display: flex;
         flex-flow: column-reverse;
         align-items: center;
@@ -136,7 +147,7 @@ a {
     }
     
     .detailsBackBtn {
-        margin-bottom: 0;
+        margin-bottom: 10px;
         width: 100px;
     }
     
@@ -152,7 +163,7 @@ a {
         justify-content: center;
         text-align: center;
         font-size: x-large;
-        width: 300px;
+        width: 360px;
         margin-right: auto;
         margin-left: auto;
     }

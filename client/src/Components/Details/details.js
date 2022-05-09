@@ -66,7 +66,13 @@ export class DetailRecipe extends React.Component {
                                     </div>
                                     <div className={s.infoContainer}>
                                         <p><b className={s.titleInformation}>Instructions</b></p>
-                                        <div>{this.props.details.steps ? this.props.details.steps : 'Probably that does not has instructions'}</div>
+                                        <div className={s.stepInfoContainer}>
+                                        {this.props.details.steps?.length > 0 ?
+                                        this.props.details.steps.map((step, index) => (
+                                            <p key={index}><b className={s.titleInformation}>{index + 1}º</b> {step}</p>
+                                        ))
+                                        : 'Probably that does not has instructions'}
+                                        </div>
                                     </div>
                                 </div>
                                 {/* {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
