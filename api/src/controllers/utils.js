@@ -5,7 +5,7 @@ const {
 } = process.env;
 module.exports = {
     getAllRecipeForApi: async () => {
-        let responseAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=10`);
+        let responseAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
         return responseAPI.data.results;
     },
     getAllRecipes: async () => {
