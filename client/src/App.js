@@ -1,4 +1,4 @@
-import './App.css';
+import s from './App.css';
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import React from 'react';
 import LandingPage from './Components/LandingPage/landingPage.js';
@@ -14,13 +14,13 @@ function App() {
     if(id) return <Detail id={id} navigate={navigate}/>
   }
   return (
-    <div>
+    <div className={s.container}>
     <Routes>
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/recipes/:id" element={<Details/>}/>
       <Route path="/recipe/create" element={<CreateRecipe/>}/>
-      <Route path="/*" element={<Error message='That Url Does Not Exist'/>}/>
+      <Route path="/*" element={<Error message='That Url Does Not Exist' error={true}/>}/>
     </Routes>
     </div>
   );

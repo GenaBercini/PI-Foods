@@ -1,0 +1,153 @@
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(250,128,114, 0.8);
+    width: 1500px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border: 2px solid salmon;
+    border-radius: 30px;
+    box-shadow: black 1px 1px 20px 1px;
+}
+
+.detailsImg {
+    display: inline;
+    position: fixed;
+    width: 400px;
+    max-width: 400px;
+    right: 72vw;
+    top: 40px;
+    border: 2px solid salmon;
+    border-radius: 35px;
+    box-shadow: black 1px 1px 10px 1px;
+}
+
+.detailsBackBtn {
+    font-size: 20px;
+    display: inline;
+    position: fixed;
+    height: 30px;
+    width: 50px;
+    left: 86vw;
+    top: 120px;
+    border-radius: 30px;
+    border: 2px solid salmon;
+    font-weight: bolder;
+    text-shadow: salmon 1px 1px 1px;
+    transition: 0.2s;
+}
+
+.detailsBackBtn:hover {
+    background-color: salmon;
+    text-shadow: black 1px 1px 1px;
+    border:2px solid white;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.detailsText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.infoContainer {
+    margin-bottom: 40px;
+}
+
+.stepsDiv {
+    display: block;
+    height: 300px;
+}
+
+.detailsTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    text-shadow: white 2px 2px 5px;
+}
+
+.titleInformation {
+    text-shadow: white 2px 2px 5px;
+}
+
+.detailsDiets {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    color: black;
+}
+
+.detailsDelete {
+    position: absolute;
+    background-color: rgb(172, 99, 91);
+    color: white;
+    font-weight: bolder;
+    text-shadow: rgb(177, 32, 32) 1px 1px 1px;
+    border: 2px solid salmon;
+    border-radius: 30px;
+    width: 150px;
+    height: 30px;
+    bottom: 10px;
+    left: 700px;
+    transition: 0.2s;
+}
+.detailsDelete:hover {
+    background-color: red;
+    border:2px solid rgb(253, 191, 191);
+}
+
+@media all and (max-width: 500px) {
+    .detailsContainer {
+        transform: scale(0.8);
+        width: 480px;
+        height: 1300px;
+        margin-top: 0;
+    }
+    .detailsTitle {
+        width: 400px;
+    }
+    
+
+    .detailsImg {
+        right: 100px;
+        top: -50px;
+        width: 300px;
+    }
+
+    .detailsBackBtn {
+        top: 20px;
+        left: 420px;
+    }
+
+    .detailsText {
+        width: 400px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .infoContainer {
+        margin-bottom: 20px;
+    }
+    
+}

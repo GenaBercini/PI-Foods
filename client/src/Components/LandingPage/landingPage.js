@@ -1,19 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./landingPage.css"
+import s from "./landingPage.module.css"
 
 export default function LandingPage() {
     return (
-        <div className="landing-page">
-            <div className="container-join">
-                <div className="text">
+        <div className={s.container}>
+            <div className={s.textContainer}>
                     <h1>Be Happy Cooking!</h1>
-                </div>
-                <div>
                     <Link to='/home'>
-                        <button className="button">JOIN NOW</button>
+                        <button className={s.button}>JOIN NOW</button>
                     </Link>
-                </div>
             </div>
         </div>
     );

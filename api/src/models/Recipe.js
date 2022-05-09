@@ -15,6 +15,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true
     },
+    minutes: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     healthScore: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -32,8 +36,9 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     steps: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,
+      defaultValue: [],
     },
     createDB: {
       type: DataTypes.BOOLEAN,

@@ -11,14 +11,23 @@ export const FILTER_BY_SCORE = "FILTER_BY_SCORE";
 export const FILTER_BY_DIETS = "FILTER_BY_DIETS";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 
-export function getRecipes() {
-    return function(dispatch) {
-        dispatch({type: LOADING})
-        axios.get('/recipes')
-        .then(response => {
-            return dispatch({type: GET_RECIPES, payload: response.data});
-        })
-        .catch(error => console.log(error));
+export function getRecipes(query) {
+    return function (dispatch) {
+        dispatch({ type: LOADING })
+        if (query) {
+            axios.get(`/recipes?name=${query}`)
+                .then(response => {
+                    return dispatch({ type: GET_RECIPES_BY_QUERY, payload: response.data })
+                })
+                .catch(error => console.log(error));
+        }
+        else {
+            axios.get('/recipes')
+                .then(response => {
+                    return dispatch({ type: GET_RECIPES, payload: response.data });
+                })
+                .catch(error => console.log(error));
+        }
     }
 };
 
@@ -32,53 +41,42 @@ export function getRecipes() {
 // }
 
 export function getRecipeById(id) {
-    return function(dispatch) {
-        dispatch({type: LOADING})
+    return function (dispatch) {
+        dispatch({ type: LOADING })
         axios.get(`/recipes/${id}`)
-        .then(response => {
-            return dispatch({type: GET_RECIPE_BY_ID, payload: response.data});
-        })
-        .catch(error => console.log(error))
+            .then(response => {
+                return dispatch({ type: GET_RECIPE_BY_ID, payload: response.data });
+            })
+            .catch(error => console.log(error))
     }
 };
 
-export function getRecipeByQuery(query) {
-    return function(dispatch) {
-        dispatch({type: LOADING})
-        axios.get(`/recipes?name=${query}`)
-        .then(response => {
-            return dispatch({type: GET_RECIPES_BY_QUERY, payload: response.data})
-        })
-        .catch(error => console.log(error))
-    }
-}
-
 export function getDiets() {
-    return function(dispatch) {
+    return function (dispatch) {
         axios.get(`/types`)
-        .then(response => {
-            return dispatch({type: GET_DIETS, payload: response.data})
-        })
-        .catch(error => console.log(error))
+            .then(response => {
+                return dispatch({ type: GET_DIETS, payload: response.data })
+            })
+            .catch(error => console.log(error))
     }
 }
 
 export function createRecipe(input) {
-    return function() {
-        axios.post('/recipes',input)
-        .then((response) => {
-            return response.json;
-        })
+    return function () {
+        axios.post('/recipes', input)
+            .then((response) => {
+                return response.json;
+            })
     }
 }
 
 export function deleteRecipe(id) {
-    return function() {
+    return function () {
         axios.delete(`/recipes/delete/${id}`)
-        .then(response => {
-            return response;
-        })
-        .catch(error => console.log(error))
+            .then(response => {
+                return response;
+            })
+            .catch(error => console.log(error))
     }
 }
 

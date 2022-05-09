@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getRecipeById, deleteRecipe } from '../../Reducer/actions';
 import Loading from '../Loading/loading';
 import Error from '../Error/error'
-import './details.css';
+import s from './details.module.css';
 
 export class DetailRecipe extends React.Component {
     constructor(props) {
@@ -28,13 +28,9 @@ export class DetailRecipe extends React.Component {
         this.props.navigate('/home')
     }
     render() {
-        let diets;
-        let instructions;
         let founded;
         if (this.props.details) {
-            diets = this.props.details.createDB ? this.props.details.diets.map(e => e.name) : this.props.details.diets;
-            instructions = this.props.details.analyzedInstructions && this.props.details.analyzedInstructions.length > 0 ?
-                this.props.details.analyzedInstructions[0].steps.map(e => e.step) : this.props.details.steps;
+            console.log(this.props.details.diets)
             founded = this.props.details.name ? false : true;
         }
         return (
@@ -42,41 +38,41 @@ export class DetailRecipe extends React.Component {
                 {
                     this.props.loading ? (<Loading />)
                         : founded ? (
-                            <div className='details'>
-                                <div className='details-card'>
-                                    <img className='detals-image' src={this.props.details.image} alt={this.props.details.title} />
-                                    <button className='details-btn' onClick={this.handleBack}>X</button>
-                                    <div className='details-text'>
-                                        <div className='details-div'>
-                                            <h1 className='text-title title'>{this.props.details.title}</h1>
+                            <div className={s.detailsContainer}>
+                                    <img className={s.detailsImg} src={this.props.details.image} alt={this.props.details.title} />
+                                    <button className={s.detailsBackBtn} onClick={this.handleBack}>X</button>
+                                    <div className={s.detailsText}>
+                                        <div className={s.infoContainer}>
+                                            <h1 className={s.detailsTitle}>{this.props.details.title}</h1>
                                         </div>
-                                        <div className='details-div'>
-                                            <p><b className='text-title'>Diets</b></p>
-                                            <div className='details-diets'>{diets?.map(e => `${e}, `)}</div>
+                                        <div className={s.infoContainer}>
+                                            <p><b className={s.titleInformation}>Diets</b></p>
+                                            <div className={s.detailsDiets}>{this.props.details.diets?.map(e => `${e.name ? e.name : e}, `)}</div>
                                         </div>
-                                        <div className='details-div-num'>
-                                            <p className='health'><b className='text-title'>Health Score: </b>{this.props.details.healthScore}</p>
+                                        <div className={s.infoContainer}>
+                                            <p><b className={s.titleInformation}>Health Score: </b>{this.props.details.healthScore}</p>
                                         </div>
-                                        <div className='details-div'>
-                                            <p className='score'><b className='text-title'>Food Score: </b>{this.props.details.spoonacularScore}</p>
+                                        <div className={s.infoContainer}>
+                                            <p><b className={s.titleInformation}>Food Score: </b>{this.props.details.spoonacularScore}</p>
                                         </div>
-                                        <div className='details-div'>
-                                            <p><b className='text-title'>Summary</b></p>
-                                            <div className='summary' dangerouslySetInnerHTML={{ __html: this.props.details.summary }}></div>
+                                        <div className={s.infoContainer}>
+                                            <p><b className={s.titleInformation}>Ready: </b>in {this.props.details.minutes} minutes</p>
                                         </div>
-                                        <div className='details-div'>
-                                            <p><b className='text-title'>Instructions</b></p>
-                                            <div className='steps'>{instructions ? instructions : 'Probably that does not has instructions'}</div>
+                                        <div className={s.infoContainer}>
+                                            <p><b className={s.titleInformation}>Summary</b></p>
+                                            <div dangerouslySetInnerHTML={{ __html: this.props.details.summary }}></div>
+                                        </div>
+                                        <div className={s.stepsDiv}>
+                                            <p><b className={s.titleInformation}>Instructions</b></p>
+                                            <div>{this.props.details.steps ? this.props.details.steps : 'Probably that does not has instructions'}</div>
                                         </div>
                                     </div>
-                                    {/* {this.props.details.createDB && <button className='details-delete' value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
-                                </div>
+                                    {/* {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
                             </div>
                         )
                             : (
                                 <Error message='Details Not Exist For That' />
                             )
-
                 }
             </div>
         )

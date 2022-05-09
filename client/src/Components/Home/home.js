@@ -9,7 +9,7 @@ import Loading from '../Loading/loading';
 import Card from '../Cards/Card.js';
 import Footer from '../Footer/footer';
 import Pagination from '../Pagination/pagination';
-import './home.css';
+import s from './home.module.css';
 
 export default function Home() {
     let navigate = useNavigate();
@@ -20,10 +20,11 @@ export default function Home() {
     })
     let recipes = useSelector((state) => state.filtered);
     let loading = useSelector((state) => state.loading);
+    let dietTypes = useSelector((state) => state.diets)
     let totalPost = recipes.length;
     let dispatch = useDispatch();
     let [currentPage, setCurrentPage] = useState(1);
-    let [postPerPage] = useState(9);
+    let [postPerPage] = useState(8);
     const lastRecipe = currentPage * postPerPage;
     const firstRecipe = lastRecipe - postPerPage;
     const currentRecipe = recipes.slice(firstRecipe, lastRecipe);
@@ -86,38 +87,38 @@ export default function Home() {
     function handlePage(e) {
         setCurrentPage(e)
     }
-
     return (
-        <div>
-            <div className='search-filter'>
-                <img src={Logo} onClick={handleLanding} className='img-search' alt='logo' />
-                <button type='reset' className='btn' onClick={handleReset}>Reload</button>
-                <button type='button' onClick={handleCreate} className='btn-recipe btn'>New recipe</button>
-                <select value={filter.alphabetically} onChange={handleName}>
+        <div className={s.home}>
+            <div className={s.navContainer}>
+                <div className={s.navHead}>
+                <img src={Logo} onClick={handleLanding} className={s.navImg} alt='logo' />
+                <SearchBar setCurrentPage={setCurrentPage}/>
+                </div>
+                <div className={s.navFilters}>
+                <button type='button' onClick={handleCreate} className={s.navBtn}>New recipe</button>
+                <button type='reset' className={s.navBtn} onClick={handleReset}>Reload Filters</button>
+                <select className={s.navOption} value={filter.alphabetically} onChange={handleName}>
                     <option disabled >{filter.alphabetically}</option>
                     <option value='A-Z'>A-Z</option>
                     <option value='Z-A'>Z-A</option>
                 </select>
-                <select value={filter.score} onChange={handleScore}>
+                <select className={s.navOption} value={filter.score} onChange={handleScore}>
                     <option disabled >{filter.score}</option>
                     <option value="Highest">Highest</option>
                     <option value="Lowerest">Lowerest</option>
                 </select>
-                <select value={filter.diet} onChange={handleDiets}>
+                <select className={s.navOption} value={filter.diet} onChange={handleDiets}>
                     <option disabled >{filter.diet}</option>
                     <option value="All">All</option>
-                    <option value="gluten free">Gluten Free</option>
-                    <option value="dairy free">Dairy Free</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="lacto ovo vegetarian">Lacto-Ovo Vegetarian</option>
-                    <option value="pescatarian">Pescatarian</option>
-                    <option value="paleolithic">Paleolithic</option>
-                    <option value="primal">Primal</option>
-                    <option value="fodmap friendly">Low FODMAP</option>
-                    <option value="whole 30">Whole30</option>
-                    <option value="Ketogenic">Ketogenic</option>
+                    {
+                        dietTypes?.map(diet => {
+                            return (
+                                <option value={diet.name}>{diet.name}</option>
+                            )
+                        })
+                    }
                 </select>
-                <SearchBar setCurrentPage={setCurrentPage}/>
+                </div>
             </div>
 
             <div className='container-cards'>
@@ -126,7 +127,7 @@ export default function Home() {
                         : recipes.length > 0 ? (
                             <div className='container'>
                                 <Pagination currentPage={currentPage} postPerPage={postPerPage} totalPost={totalPost} handlePage={handlePage} />
-                                <div className='cards'>
+                                <div className={s.cards}>
                                     {
                                         currentRecipe?.map((e) => {
                                             return (
@@ -135,6 +136,7 @@ export default function Home() {
                                                     key={e.id}
                                                     spoonacularScore={e.spoonacularScore}
                                                     title={e.title}
+                                                    minutes={e.minutes}
                                                     img={e.image}
                                                     diets={e.diets}/>
                                             )
@@ -146,7 +148,7 @@ export default function Home() {
                         )
                             :
                             (
-                                <Error message='Recipe Does Not Exist'/>
+                                <Error message='Recipe Does Not Exist' handleReset={handleReset} error={false}/>
                             )
                 }
             </div>

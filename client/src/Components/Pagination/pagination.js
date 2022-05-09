@@ -1,5 +1,5 @@
 import React from 'react';
-import './pagination.css'
+import s from './pagination.module.css'
 
 export default function Pagination({totalPost, postPerPage, handlePage, currentPage}) {
     const pageNumbers = [];
@@ -9,14 +9,12 @@ export default function Pagination({totalPost, postPerPage, handlePage, currentP
     };
 
     return (
-        <div className='container'>
-            <ul className='container-numbers'>
+            <ul className={s.numbers}>
                 {pageNumbers.map(n => (
-                    <li key={n} className={currentPage === n ? 'number-active' : 'number'} onClick={() => handlePage(n)}>
+                    <li key={n} className={currentPage === n ? s.numberActive : s.number} onClick={() => handlePage(n)}>
                         <div>{n}</div>
                     </li>
                 ))}
             </ul>
-        </div>
     )
 }

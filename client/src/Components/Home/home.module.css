@@ -1,0 +1,140 @@
+body {
+    background-image: url("../../Utils/download.svg");
+}
+
+.home {
+    background-image: url("../../Utils/download.svg");
+    background-color: white;
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: large;
+}
+
+.navContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(250, 128, 114, 0.8);
+    box-shadow: black 1px 1px 10px 2px;
+    border: 2px solid salmon;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.navHead {
+    display: flex;
+    flex-direction: row;
+}
+
+.navImg {
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.navImg:hover {
+    animation: rotate 1s;
+}
+
+.navFilters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navOption {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    border: 2px solid salmon;
+    border-radius: 20px;
+    font-family: 'Averia Serif Libre', cursive;
+    color: rgb(47, 45, 45);
+    text-shadow: salmon 1px 1px 2px;
+    background-color: white;
+    height: 30px;
+    font-weight: bolder;
+    font-size: large;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform:
+            rotateY(360deg);
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navBtn {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    border: 2px solid salmon;
+    border-radius: 20px;
+    font-family: 'Averia Serif Libre', cursive;
+    color: rgb(47, 45, 45);
+    text-shadow: salmon 1px 1px 2px;
+    background-color: white;
+    height: 30px;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.navBtn:hover {
+    background-color: salmon;
+    color: white;
+    border-color: white;
+    text-shadow: black 2px 2px 2px;
+}
+
+@media all and (max-width: 500px) {
+    .navFilters {
+        display: flex;
+        flex-direction: column;
+    }
+    .navContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .navImg {
+        margin: 0;
+    }
+
+    .navOption {
+        text-align: center;
+        margin: 2px;
+        height: 25px;
+        font-weight: bold;
+        font-size: medium;
+    }
+
+    .navBtn {
+        text-align: center;
+        margin: 2px;
+        height: 25px;
+        font-weight: bold;
+        font-size: medium;
+    }
+}

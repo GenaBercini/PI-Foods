@@ -1,23 +1,17 @@
-.footer{
+.footerContainer {
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
     bottom: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: rgba(250,128,114, 0.8);
-    width: 97.7vw;
     border-radius: 50px 50px 0px 0px;
     border: 2px solid  salmon;
-    height: 50px;
+    background-color: rgba(250,128,114, 0.8);
     font-family: 'Averia Serif Libre', cursive;
     font-size: large;
 }
 
-.footer-logo {
+.footerImg {
     width: 40px;
-    padding-right: 40px;
-    margin-bottom: 5px;
 }

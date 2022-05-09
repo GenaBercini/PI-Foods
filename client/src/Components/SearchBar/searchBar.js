@@ -1,7 +1,8 @@
 import { React,useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getRecipeByQuery } from '../../Reducer/actions';
-import './searchBar.css';
+import { getRecipes } from '../../Reducer/actions';
+import searchImg from '../../Utils/lupa.png'
+import s from './searchBar.module.css';
 
 export default function SearchBar({setCurrentPage}) {
     let [search, setSearch] = useState('');
@@ -18,19 +19,19 @@ export default function SearchBar({setCurrentPage}) {
         if(!search.length) {
             alert('Please write something')
         }
-        dispatch(getRecipeByQuery(search));
+        dispatch(getRecipes(search));
         setCurrentPage(1);
         setSearch('');
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={s.searchContainer} onSubmit={onSubmit}>
             <input
-            className="search-input"
-            type="text" placeholder="Search by name..."
+            className={s.searchInput}
+            type="text" placeholder="Search.."
             value={search}
             onChange={onChange}></input>
-            <button className='search-btn' type='submit'>Search</button>
+            <button className={s.searchBtn} type='submit'><img src={searchImg} alt='searchimg'/></button>
         </form>
     )
 }

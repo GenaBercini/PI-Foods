@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './Card.css'
+import s from './Card.module.css'
 
 export default function Card(props) {
     let navigate = useNavigate()
@@ -14,11 +14,10 @@ export default function Card(props) {
         navigate(`/recipes/${props.id}`)
     }
     return (
-        <div className="card" onClick={handleDetails}>
-            <div className="card-text">
-                <span className="card-title">{props.title}</span>
-                <span className="card-score"><b>Score: </b>{props.spoonacularScore}</span>
-                <div className="card-diets">
+        <div className={s.cardContainer} onClick={handleDetails}>
+             <h3 className={s.cardTitle}>{props.title}</h3>
+            <div className={s.cardText}>
+                <div className={s.cardDiets}>
                 <span><b>Diets</b></span>
                 {
                     diets ?
@@ -27,10 +26,10 @@ export default function Card(props) {
                         )) : ""
                 }
                 </div>
+                <span><b>Score: </b>{props.spoonacularScore}</span>
+                <span className={s.data}><b>Ready: </b>in {props.minutes} minutes</span>
                 </div>
-            <div className="card-image" >
-                <img src={props.img} alt={props.title}/>
-            </div>
+                <img className={s.cardImg} src={props.img} alt={props.title}/>
         </div>
     )
 }

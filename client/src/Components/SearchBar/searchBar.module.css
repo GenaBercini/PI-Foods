@@ -1,0 +1,29 @@
+.searchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchInput{
+    border: 2px solid salmon;
+    border-radius: 20px 0px 0px 20px;
+    border-right: none;
+    height: 30px;
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: large;
+    padding: 10px;
+}
+
+.searchBtn {
+    background-color: salmon;
+    width: 30px;
+    height: 30px;
+    border-radius: 0px 20px 20px 0px;
+    border: 2px solid salmon;
+    border-left: none;
+    cursor: pointer;
+}
+
+.searchBtn img {
+    width: 20px;
+}

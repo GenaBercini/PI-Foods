@@ -1,0 +1,239 @@
+.formDiv {
+    background-color: rgba(250, 128, 114, 0.8);
+    display: flex;
+    height: 800px;
+    width: 600px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    border: 3px solid rgb(195, 121, 113);
+    border-radius: 30px;
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: large;
+}
+
+.firstForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 600px;
+    text-shadow: white 1px 1px 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.secondForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 600px;
+    text-shadow: white 1px 1px 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formInput {
+    background-color: white;
+    text-align: center;
+    border: 3px solid rgb(195, 121, 113);
+    border-radius: 20px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.formRange {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rangesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.rangesContainer {
+    width: 500px;
+}
+
+.img {
+    display: block;
+    height: 150px;
+}
+
+.img img {
+    margin-top: 10px;
+    width: 140px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border:2px solid salmon;
+    border-radius: 20px;
+}
+
+.btnForm {
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: x-large;
+    border: 2px solid salmon;
+    background-color: white;
+    border-radius: 10px;
+    transition: .2s;
+    width: 120px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnDisable {
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: x-large;
+    border: 2px solid salmon;
+    background-color: white;
+    border-radius: 10px;
+    transition: .2s;
+    width: 120px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnForm:hover {
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(195, 121, 113);
+    color: white;
+    text-shadow: black 1px 1px 2px;
+}
+
+.selectDiets {
+    list-style-type: none;
+}
+
+.deleteBtn{
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(255, 21, 21) 1px 1px 2px;
+    margin-left: 2px;
+    padding: 3px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: salmon;
+}
+
+.deleteBtn:hover {
+    color: salmon;
+    background-color: white;
+    border: 2px solid salmon;
+    text-shadow: black 1px 1px 2px;
+}
+
+.divDiets{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dietsBlock {
+    display: block;
+    height: 180px;
+}
+
+.dietsBtn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.dangerRange {
+    color: rgb(255, 0, 0);
+    width: 200px;
+    display: block;
+    height: 80px;
+    text-shadow: rgb(255, 255, 255) 2px 2px 3px;
+}
+
+.danger {
+    color: rgb(255, 0, 0);
+    display: block;
+    height: 80px;
+    text-shadow: rgb(255, 255, 255) 2px 2px 3px;
+}
+
+@media all and (max-width: 500px) {
+    .formDiv {
+        width: 390px;
+        margin-top: 50px;
+    }
+    .firstForm {
+        width: 370px;
+    }
+    
+    .secondForm {
+        width: 320px;
+    }
+    
+    .formInput {
+        width: 320px;
+    }
+
+    .img {
+        height: 80px;
+    }
+    
+    .img img {
+        margin-top: 10px;
+        width: 70px;
+    }
+    
+    .btnForm {
+        width: 80px;
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .btnDisable {
+        width: 80px;
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .divDiets{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .dietsBlock {
+        height: 210px;
+    }
+    
+    .danger {
+        height: 80px;
+    }
+    
+    .dangerRange {
+        width: 180px;
+    }
+
+    .rangesContainer {
+        width: 300px;
+    }
+}

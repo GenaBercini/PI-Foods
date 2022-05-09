@@ -1,0 +1,66 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(250, 128, 114, 0.8);
+    border: 4px solid transparent;
+    width: 370px;
+    height: 600px;
+    border-radius: 30px;
+    margin: 50px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: black 1px 1px 10px 1px;
+    transition: 0.3s;
+    font-family: 'Averia Serif Libre', cursive;
+    font-size: large;
+}
+
+.cardContainer:hover {
+    box-shadow: black 4px 4px 20px 4px;
+    background-color: rgba(250, 128, 114, 0.9);
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+.cardTitle {
+    display: block;
+    height: 60px;
+    text-shadow: white 1px 1px 1px;
+}
+
+.cardImg {
+    width: 320px;
+    height: 240px;
+    border: 2px solid white;
+    border-radius: 30px;
+}
+
+.cardText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cardDiets {
+    margin-top: 10px;
+    display: flex;
+    height: 180px;
+    flex-direction: column;
+}
+
+.data {
+    margin-top: 10px
+}
+
+
+@media all and (max-width: 500px) {
+    .cardContainer {
+        transform: scale(0.8);
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,12 @@
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.loadingImg {
+    border-radius: 100%;
+    width: 500px;
+}
