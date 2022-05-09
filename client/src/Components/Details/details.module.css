@@ -1,9 +1,9 @@
 .detailsContainer {
+    background-color: rgba(250,128,114, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(250,128,114, 0.8);
     width: 1500px;
     height: 800px;
     margin-left: auto;
@@ -14,26 +14,27 @@
     box-shadow: black 1px 1px 20px 1px;
 }
 
+.detailsHead {
+    height: 200px;
+    width: 1400px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .detailsImg {
-    display: inline;
-    position: fixed;
-    width: 400px;
-    max-width: 400px;
-    right: 72vw;
-    top: 40px;
+    width: 300px;
     border: 2px solid salmon;
     border-radius: 35px;
     box-shadow: black 1px 1px 10px 1px;
 }
 
 .detailsBackBtn {
+    margin-bottom: 150px;
     font-size: 20px;
-    display: inline;
-    position: fixed;
     height: 30px;
     width: 50px;
-    left: 86vw;
-    top: 120px;
     border-radius: 30px;
     border: 2px solid salmon;
     font-weight: bolder;
@@ -62,12 +63,9 @@
 }
 
 .infoContainer {
-    margin-bottom: 40px;
-}
-
-.stepsDiv {
-    display: block;
-    height: 300px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .detailsTitle {
@@ -76,7 +74,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 700px;
-    margin-right: auto;
+    margin-right: 250px;
     margin-left: auto;
     text-shadow: white 2px 2px 5px;
 }
@@ -118,43 +116,51 @@ a {
 
 @media all and (max-width: 500px) {
     .detailsContainer {
-        transform: scale(0.8);
-        width: 400px;
-        height: 1500px;
-        margin-top: 0;
-    }
-    .detailsTitle {
-        width: 300px;
+        width: 370px;
+        height: fit-content;
+        margin-top: 10px;
     }
     
-
+    .detailsHead {
+        height: 300px;
+        width: 200px;
+        display: flex;
+        flex-flow: column-reverse;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
     .detailsImg {
-        right: 73px;
-        top: -50px;
-        width: 250px;
-    }
-
-    .detailsBackBtn {
-        height: 35px;
-        width: 50px;
-        top: 20px;
-        left: 335px;
-    }
-
-    .detailsText {
-        width: 320px;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .infoContainer {
-        margin-bottom: 20px;
-    }
-
-    .stepsDiv {
-        display: block;
-        height: 500px;
+        width: 200px;
     }
     
+    .detailsBackBtn {
+        margin-bottom: 0;
+        width: 100px;
+    }
+    
+    .infoContainer {
+        margin-bottom: 15px;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    
+    .detailsTitle {
+        display: flex;
+        flex-direction: column wrap;
+        justify-content: center;
+        text-align: center;
+        font-size: x-large;
+        width: 300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    .titleInformation {
+        text-shadow: white 2px 2px 5px;
+    }
+    
+    .detailsDiets {
+        flex-direction: row wrap;
+    }
 }

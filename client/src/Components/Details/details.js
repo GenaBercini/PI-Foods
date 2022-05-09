@@ -39,35 +39,37 @@ export class DetailRecipe extends React.Component {
                     this.props.loading ? (<Loading />)
                         : founded ? (
                             <div className={s.detailsContainer}>
+                                <div className={s.detailsHead}>
                                     <img className={s.detailsImg} src={this.props.details.image} alt={this.props.details.title} />
-                                    <button className={s.detailsBackBtn} onClick={this.handleBack}>X</button>
-                                    <div className={s.detailsText}>
-                                        <div className={s.infoContainer}>
-                                            <h1 className={s.detailsTitle}>{this.props.details.title}</h1>
-                                        </div>
-                                        <div className={s.infoContainer}>
-                                            <p><b className={s.titleInformation}>Diets</b></p>
-                                            <div className={s.detailsDiets}>{this.props.details.diets?.map(e => `${e.name ? e.name : e}, `)}</div>
-                                        </div>
-                                        <div className={s.infoContainer}>
-                                            <p><b className={s.titleInformation}>Health Score: </b>{this.props.details.healthScore}</p>
-                                        </div>
-                                        <div className={s.infoContainer}>
-                                            <p><b className={s.titleInformation}>Food Score: </b>{this.props.details.spoonacularScore}</p>
-                                        </div>
-                                        <div className={s.infoContainer}>
-                                            <p><b className={s.titleInformation}>Ready: </b>in {this.props.details.minutes} minutes</p>
-                                        </div>
-                                        <div className={s.infoContainer}>
-                                            <p><b className={s.titleInformation}>Summary</b></p>
-                                            <div dangerouslySetInnerHTML={{ __html: this.props.details.summary }}></div>
-                                        </div>
-                                        <div className={s.stepsDiv}>
-                                            <p><b className={s.titleInformation}>Instructions</b></p>
-                                            <div>{this.props.details.steps ? this.props.details.steps : 'Probably that does not has instructions'}</div>
-                                        </div>
+                                    <div className={s.infoContainer}>
+                                        <h1 className={s.detailsTitle}>{this.props.details.title}</h1>
                                     </div>
-                                    {/* {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
+                                    <button className={s.detailsBackBtn} onClick={this.handleBack}>X</button>
+                                </div>
+                                <div className={s.detailsText}>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Diets</b></p>
+                                        <div className={s.detailsDiets}>{this.props.details.diets?.map(e => `${e.name ? e.name : e}, `)}</div>
+                                    </div>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Health Score: </b>{this.props.details.healthScore}</p>
+                                    </div>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Food Score: </b>{this.props.details.spoonacularScore}</p>
+                                    </div>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Ready: </b>in {this.props.details.minutes} minutes</p>
+                                    </div>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Summary</b></p>
+                                        <div dangerouslySetInnerHTML={{ __html: this.props.details.summary }}></div>
+                                    </div>
+                                    <div className={s.infoContainer}>
+                                        <p><b className={s.titleInformation}>Instructions</b></p>
+                                        <div>{this.props.details.steps ? this.props.details.steps : 'Probably that does not has instructions'}</div>
+                                    </div>
+                                </div>
+                                {/* {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
                             </div>
                         )
                             : (
