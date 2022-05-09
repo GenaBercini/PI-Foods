@@ -119,28 +119,30 @@ a {
 @media all and (max-width: 500px) {
     .detailsContainer {
         transform: scale(0.8);
-        width: 480px;
-        height: 1300px;
+        width: 400px;
+        height: 1500px;
         margin-top: 0;
     }
     .detailsTitle {
-        width: 400px;
+        width: 300px;
     }
     
 
     .detailsImg {
-        right: 100px;
+        right: 73px;
         top: -50px;
-        width: 300px;
+        width: 250px;
     }
 
     .detailsBackBtn {
+        height: 35px;
+        width: 50px;
         top: 20px;
-        left: 420px;
+        left: 335px;
     }
 
     .detailsText {
-        width: 400px;
+        width: 320px;
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -148,6 +150,11 @@ a {
 
     .infoContainer {
         margin-bottom: 20px;
+    }
+
+    .stepsDiv {
+        display: block;
+        height: 500px;
     }
     
 }
