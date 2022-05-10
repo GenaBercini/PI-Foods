@@ -124,6 +124,84 @@ a {
     border:2px solid rgb(253, 191, 191);
 }
 
+@media all and (max-width: 1800px) {
+    .detailsContainer {
+        width: 1200px;
+        height: fit-content;
+        min-height: 800px;
+        margin-top: 10px;
+    }
+    
+    .detailsHead {
+        margin-top: 10px;
+        width: 1100px;
+    }
+    
+    .detailsImg {
+        width: 300px;
+    }
+    
+    .detailsBackBtn {
+        margin-bottom: 10px;
+        width: 100px;
+    }
+    
+    .infoContainer {
+        margin-bottom: 15px;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    
+    .detailsTitle {
+        display: flex;
+        flex-direction: column wrap;
+        justify-content: center;
+        text-align: center;
+        font-size: x-large;
+        width: 450px;
+        margin-right: 180px;
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .detailsContainer {
+        width: 1000px;
+        height: fit-content;
+        min-height: 800px;
+        margin-top: 10px;
+    }
+    
+    .detailsHead {
+        margin-top: 10px;
+        width: 900px;
+    }
+    
+    .detailsImg {
+        width: 250px;
+    }
+    
+    .detailsBackBtn {
+        margin-bottom: 10px;
+        width: 50px;
+    }
+    
+    .infoContainer {
+        margin-bottom: 15px;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    
+    .detailsTitle {
+        display: flex;
+        flex-direction: column wrap;
+        justify-content: center;
+        text-align: center;
+        font-size: x-large;
+        width: 300px;
+        margin-right: 180px;
+    }
+}
+
 @media all and (max-width: 500px) {
     .detailsContainer {
         width: 370px;

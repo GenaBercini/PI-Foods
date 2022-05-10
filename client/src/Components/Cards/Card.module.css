@@ -55,7 +55,56 @@
 .data {
     margin-top: 10px
 }
+@media all and (max-width: 1800px) {
+    .cardContainer {
+        width: 370px;
+        height: fit-content;
+        margin: 30px;
+        font-size: large;
+    }
 
+    .cardTitle {
+        width:fit-content;
+    }
+
+    .cardImg {
+        width: 340px;
+    }
+}
+
+@media all and (max-width: 1600px) {
+    .cardContainer {
+        width: 429px;
+        height: fit-content;
+        margin: 30px;
+        font-size: large;
+    }
+    
+    .cardImg {
+        width: 400px;
+    }
+}
+
+@media all and (max-width: 1300px) {
+    .cardContainer {
+        width: 329px;
+        height: fit-content;
+        margin: 30px;
+        font-size: medium;
+    }
+
+    .cardTitle {
+        display: block;
+        width:fit-content;
+        height: 50px;
+        text-shadow: white 1px 1px 1px;
+    }
+    
+    .cardImg {
+        width: 300px;
+    }
+ 
+}
 
 @media all and (max-width: 500px) {
     .cardContainer {
