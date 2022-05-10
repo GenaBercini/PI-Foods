@@ -31,7 +31,7 @@
 }
 
 .cardImg {
-    width: 320px;
+    width: 340px;
     height: 240px;
     border: 2px solid white;
     border-radius: 30px;
@@ -48,7 +48,7 @@
 .cardDiets {
     margin-top: 20px;
     display: flex;
-    height: 170px;
+    height: 180px;
     flex-direction: column;
 }
 
