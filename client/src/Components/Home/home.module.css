@@ -12,6 +12,7 @@ body {
 .navContainer {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 80vw;
     margin-left: auto;
     margin-right: auto;
@@ -38,6 +39,7 @@ body {
 .navFilters {
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
     align-items: center;
 }
 
@@ -45,12 +47,10 @@ body {
     text-align: center;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: 200px;
-    display: flex;
-    flex-direction: row;
+    flex-grow: 1;
     align-items: center;
-    margin: 20px;
+    margin: 5px;
+    min-width: 120px;
     border: 2px solid salmon;
     border-radius: 20px;
     font-family: 'Averia Serif Libre', cursive;
@@ -74,9 +74,8 @@ body {
 }
 
 .cards {
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     margin-left: auto;
     margin-right: auto;
 }
@@ -86,11 +85,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 200px;
-    display: flex;
-    flex-direction: row;
+    flex-grow: 1;
+    margin: 5px;
+    min-width: 120px;
     align-items: center;
-    margin: 20px;
     border: 2px solid salmon;
     border-radius: 20px;
     font-family: 'Averia Serif Libre', cursive;
@@ -109,7 +107,7 @@ body {
     text-shadow: black 2px 2px 2px;
 }
 
-@media all and (max-width: 1800px) {
+ @media all and (max-width: 1800px) {
     .navImg {
         margin: 10px;
     }
@@ -120,10 +118,8 @@ body {
     }
 
     .cards {
-        display: flex;
-        flex-direction: row wrap;
-        margin-left: auto;
-        margin-right: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .navBtn {
@@ -132,47 +128,74 @@ body {
     
 }
 
-@media all and (max-width: 1600px) {
+ @media all and (max-width: 1600px) {
     .navImg {
-        margin: 10px;
+        margin: 2px;
     }
 
     .navOption {
-        width: 150px;
-        margin: 10px;
+        margin: 2px;
+        font-size: medium;
     }
 
     .cards {
-        display: flex;
-        flex-direction: row wrap;
-        margin-left: auto;
-        margin-right: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .navBtn {
-        width: 150px;
-        margin: 10px;
+        margin: 2px;
+        font-size: medium;
     }
     
-}
+} 
 
-@media all and (max-width: 1200px) {
+ @media all and (max-width: 1300px) {
+    .navHead {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .navFilters {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+
+    .navContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
     .navImg {
-        margin: 2px;
-        width: 50px;
+        margin: 0;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .navOption {
-        width: 135px;
+        text-align: center;
         margin: 2px;
+        height: 25px;
+        font-weight: bold;
+        font-size: medium;
     }
-    
+
     .navBtn {
-        width: 135px;
-        margin: 5px;
+        text-align: center;
+        margin: 2px;
+        height: 25px;
+        font-weight: bold;
+        font-size: medium;
     }
     
-}
+}  
 
 @media all and (max-width: 500px) {
     .navFilters {
@@ -188,17 +211,13 @@ body {
     }
 
     .navOption {
-        text-align: center;
-        margin: 2px;
-        height: 25px;
+        width: 90%;
         font-weight: bold;
         font-size: medium;
     }
 
     .navBtn {
-        text-align: center;
-        margin: 2px;
-        height: 25px;
+        width: 90%;
         font-weight: bold;
         font-size: medium;
     }
