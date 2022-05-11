@@ -67,7 +67,7 @@ PORT must be the same as api.
 - Open the project console
     + Inside `api` folder, run the command line, `npm start`.
         
-    + Inside `client` folder, run the command line, `npm start` (go to http://localhost:3000/). 
+    + Inside `client` folder, run the command line, `npm start` and go to `http://localhost:3000/`. 
 
 ## Project Screens
 <p align="center">Landing Page</p>
