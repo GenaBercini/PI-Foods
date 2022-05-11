@@ -9,11 +9,13 @@
 </p>
 
 ## About
-
+This project consists of the development of a S.P.A (Single Page Application), which uses API data (spoonacular) to then store them in a database. This allows the user to have available the information of all the recipes and so have the information to make them with all the necessary information.
 
 ## Objetives
 
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
+- Filter recipes by diet
+- Order by score and alphabet
+- Find and create recipes
 
 ## Stack of Technologies
 
@@ -23,6 +25,49 @@ HTML, CSS, Javascript, React, Redux
 NodeJS, Express, Sequelize
 ### Database: 
 PostgreSQL
+
+## BoilerPlate
+
+The boilerPlate has two folders: `api` and `client`.
+
+Inside `api` you must have to create a file called: `.env` 
+that has the following form: 
+
+```
+DB_USER=db_user_name
+DB_PASSWORD=db_user_password
+DB_HOST=localhost
+DB_NAME=db_name
+PORT=port
+API_KEY=api_key
+```
+You have to replace `api_key`, with your key generated on the page `https://spoonacular.com/food-api/console#Dashboard` with your user.
+
+Inside `client` you must have to create a file called: `.env` 
+that has the following form: 
+
+```
+REACT_APP_API="http://localhost:PORT"
+```
+PORT must be the same as api.
+
+## Next 
+### _Connect the data base_
+
+ - Go to your postgres database manager and create a new   database. Replace all `.env` information with database information
+
+ ### _Install the necesary package to run it_
+
+- Open the project console
+    + Inside `api` folder, run the command line, `npm install`.
+    + Inside `client` folder, run the command line, `npm install`.
+
+### _Run the project_
+
+- Open the project console
+    + Inside `api` folder, run the command line, `npm start`.
+        
+    + Inside `client` folder, run the command line, `npm start` (go to http://localhost:3000/). 
 
 ## Project Screens
 <p align="center">Landing Page</p>
