@@ -150,11 +150,11 @@ body {
     
 } 
 
- @media all and (max-width: 1300px) {
+ @media all and (max-width: 1500px) {
     .navHead {
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 90%;
         justify-content: space-between;
     }
 
@@ -176,7 +176,7 @@ body {
 
     .cards {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .navOption {

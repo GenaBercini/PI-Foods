@@ -178,8 +178,8 @@
 
 @media all and (max-width: 500px) {
     .formDiv {
-        width: 390px;
-        margin-top: 50px;
+        width: 380px;
+        margin-top: 20px;
     }
     .firstForm {
         width: 370px;

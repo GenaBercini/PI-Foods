@@ -28,7 +28,7 @@
     width: 20px;
 }
 
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1500px) {
     .searchContainer {
         width: 100%;
     }
