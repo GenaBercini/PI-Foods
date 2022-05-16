@@ -30,7 +30,6 @@ export class DetailRecipe extends React.Component {
     render() {
         let founded;
         if (this.props.details) {
-            console.log(this.props.details.diets)
             founded = this.props.details.name ? false : true;
         }
         return (
