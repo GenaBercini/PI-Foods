@@ -106,17 +106,19 @@ a {
 }
 
 .detailsDelete {
-    position: absolute;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(172, 99, 91);
     color: white;
     font-weight: bolder;
     text-shadow: rgb(177, 32, 32) 1px 1px 1px;
     border: 2px solid salmon;
     border-radius: 30px;
-    width: 150px;
+    width: 100px;
     height: 30px;
-    bottom: 10px;
-    left: 700px;
     transition: 0.2s;
 }
 .detailsDelete:hover {
@@ -230,7 +232,7 @@ a {
     }
     
     .infoContainer {
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         display: flex;
         flex-flow: column wrap;
     }

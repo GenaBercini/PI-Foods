@@ -4,7 +4,6 @@ const {
     getRecipeById,
     getAllRecipeForApi
 } = require('./utils');
-const { getTypes } = require('./types.controllers')
 const { Recipe, Diets } = require('../db.js');
 
 const recipeControllers = {
@@ -78,9 +77,14 @@ const recipeControllers = {
     deleteRecipe: async (req, res, next) => {
         const { id } = req.params;
         try {
-            let recipeDeleted = await Recipe.findByPk(id)
-            await recipeDeleted.destroy();
-            res.send('Successfully deleted recipe');
+            let recipeDeleted = await Recipe.findByPk(id);
+            if(recipeDeleted.dataValues.createDB) {
+                await recipeDeleted.destroy();
+                return res.send('Successfully deleted recipe');
+            }
+            else {
+                return res.status(404).json({ msg: "Can't delete api recipes", error: e });
+            }
         }
         catch (e) {
             res.status(404).json({ msg: "Error", error: e });
@@ -125,7 +129,8 @@ const recipeControllers = {
                     spoonacularScore: element.spoonacularScore,
                     image: element.image,
                     summary: element.summary,
-                    steps: steps
+                    steps: steps,
+                    createDB: false
                 });
                 let arrayDiets = await Diets.findAll({
                     where: {

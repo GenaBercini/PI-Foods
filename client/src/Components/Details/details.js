@@ -8,7 +8,7 @@ import s from './details.module.css';
 export class DetailRecipe extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleDelete = this.handleDelete.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
         this.handleBack = this.handleBack.bind(this)
     }
 
@@ -17,12 +17,12 @@ export class DetailRecipe extends React.Component {
         this.props.getRecipeById(id)
     }
 
-    // handleDelete(e) {
-    //     e.preventDefault();
-    //     this.props.deleteRecipe(e.target.value);
-    //     alert('Successfully deleted recipe')
-    //     this.props.navigate('/home')
-    // }
+    handleDelete(e) {
+        e.preventDefault();
+        this.props.deleteRecipe(e.target.value);
+        alert('Successfully deleted recipe')
+        this.props.navigate('/home')
+    }
     handleBack(e) {
         e.preventDefault();
         this.props.navigate('/home')
@@ -30,7 +30,6 @@ export class DetailRecipe extends React.Component {
     render() {
         let founded;
         if (this.props.details) {
-            console.log(this.props.details.diets)
             founded = this.props.details.name ? false : true;
         }
         return (
@@ -74,8 +73,8 @@ export class DetailRecipe extends React.Component {
                                         : 'Probably that does not has instructions'}
                                         </div>
                                     </div>
+                                    {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>}
                                 </div>
-                                {/* {this.props.details.createDB && <button className={s.detailsDelete} value={this.props.id} onClick={this.handleDelete}>DELETE</button>} */}
                             </div>
                         )
                             : (

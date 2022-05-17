@@ -31,15 +31,6 @@ export function getRecipes(query) {
     }
 };
 
-// export function getAllRecipes() {
-//     return function() {
-//         axios.post('http://localhost:3001/recipes/create')
-//         .then(response => {
-//             return response;
-//         })
-//     }
-// }
-
 export function getRecipeById(id) {
     return function (dispatch) {
         dispatch({ type: LOADING })
