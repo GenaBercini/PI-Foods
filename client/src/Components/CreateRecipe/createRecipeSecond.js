@@ -117,11 +117,11 @@ export default function CreateRecipeSecond({ setInput, input, error, setError, v
                     </div>
                     <div>
                         <div>Steps:</div>
-                        <div><label>1º</label><input className={s.formInput} type="text" value={input.stepsOne} placeholder="Summary" name="stepsOne" onChange={handleStep} /></div>
-                        <div><label>2º</label><input className={s.formInput} type="text" value={input.stepsTwo} placeholder="Summary" name="stepsTwo" onChange={handleStep} /></div>
-                        <div><label>3º</label><input className={s.formInput} type="text" value={input.stepsThree} placeholder="Summary" name="stepsThree" onChange={handleStep} /></div>
-                        <div><label>4º</label><input className={s.formInput} type="text" value={input.stepsFour} placeholder="Summary" name="stepsFour" onChange={handleStep} /></div>
-                        <div><label>5º</label><input className={s.formInput} type="text" value={input.stepsFive} placeholder="Summary" name="stepsFive" onChange={handleStep} /></div>
+                        <div><label>1º</label><input className={s.formInput} type="text" value={input.stepsOne} placeholder="Step 1º" name="stepsOne" onChange={handleStep} /></div>
+                        <div><label>2º</label><input className={s.formInput} type="text" value={input.stepsTwo} placeholder="Step 2º" name="stepsTwo" onChange={handleStep} /></div>
+                        <div><label>3º</label><input className={s.formInput} type="text" value={input.stepsThree} placeholder="Step 3º" name="stepsThree" onChange={handleStep} /></div>
+                        <div><label>4º</label><input className={s.formInput} type="text" value={input.stepsFour} placeholder="Step 4º" name="stepsFour" onChange={handleStep} /></div>
+                        <div><label>5º</label><input className={s.formInput} type="text" value={input.stepsFive} placeholder="Step 5º" name="stepsFive" onChange={handleStep} /></div>
                         <p className={s.danger}>{error.steps}</p>
                     </div>
                     <button disabled={button} className={button ? s.btnDisable : s.btnForm} type="submit">Create</button>
