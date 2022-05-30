@@ -9,7 +9,7 @@
 </p>
 
 ## About
-This project consists of the development of a S.P.A (Single Page Application), which uses API data (spoonacular) to then store them in a database. This allows the user to have available the information of all the recipes and so have the information to make them with all the necessary information.
+This project consists of the development of S.P.A (Single Page Application), that uses data from spoonacular's API  and it's own relational database. This allows the user to have available the information of all the recipes, and the user can search for recipes, sort them alphabetically and by score, filter by type of diet, create new recipes and delete them.
 
 ## Objetives
 
