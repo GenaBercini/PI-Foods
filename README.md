@@ -15,7 +15,7 @@ This project consists of the development of S.P.A (Single Page Application), tha
 
 - Filter recipes by diet
 - Order by score and alphabet
-- Find and create recipes
+- Find, creat and delete recipes
 
 ## Stack of Technologies
 
