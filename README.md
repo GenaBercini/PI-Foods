@@ -25,7 +25,7 @@ HTML, CSS, Javascript, React, Redux
 NodeJS, Express, Sequelize
 ### Database: 
 PostgreSQL
-### Deploy: `https://pi-food-six.vercel.app/`
+### Deploy: `https://foods-page.vercel.app/`
 
 ## BoilerPlate
 
