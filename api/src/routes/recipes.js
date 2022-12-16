@@ -7,5 +7,5 @@ router.get('/', getRecipes);
 router.get('/:id', getOneRecipe);
 router.delete('/delete/:id', deleteRecipe);
 router.post('/', postRecipe);
-router.get('/create', allToDb);
+router.post('/create', allToDb);
 module.exports = router;
