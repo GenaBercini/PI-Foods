@@ -17,6 +17,7 @@ export function getRecipes(query) {
         if (query) {
             axios.get(`/recipes?name=${query}`)
                 .then(response => {
+                    console.log(response.data)
                     return dispatch({ type: GET_RECIPES_BY_QUERY, payload: response.data })
                 })
                 .catch(error => console.log(error));

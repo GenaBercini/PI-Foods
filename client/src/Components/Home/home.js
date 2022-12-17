@@ -14,7 +14,7 @@ import s from './home.module.css';
 export default function Home() {
     let navigate = useNavigate();
     let [filter, setFilter] = useState({
-        score: 'Sort by Scores',
+        price: 'Sort by Price',
         diet:'Sort by Diets',
         alphabetically:'Sort Alphabetically'
     })
@@ -58,7 +58,7 @@ export default function Home() {
         dispatch(filterByScore(e.target.value));
         setFilter({
             ...filter,
-            score: e.target.value,
+            price: e.target.value,
         });
         setCurrentPage(1)
     }
@@ -77,7 +77,7 @@ export default function Home() {
         e.preventDefault();
         dispatch(getRecipes());
         setFilter({
-            score: 'Sort by Scores',
+            price: 'Sort by Price',
             diet: 'Sort by Diets',
             alphabetically: 'Sort Alphabetically'
         });
@@ -102,8 +102,8 @@ export default function Home() {
                     <option value='A-Z'>A-Z</option>
                     <option value='Z-A'>Z-A</option>
                 </select>
-                <select className={s.navOption} value={filter.score} onChange={handleScore}>
-                    <option disabled >{filter.score}</option>
+                <select className={s.navOption} value={filter.price} onChange={handleScore}>
+                    <option disabled >{filter.price}</option>
                     <option value="Highest">Highest</option>
                     <option value="Lowerest">Lowerest</option>
                 </select>
@@ -134,7 +134,7 @@ export default function Home() {
                                                 <Card
                                                     id={e.id}
                                                     key={e.id}
-                                                    spoonacularScore={e.spoonacularScore}
+                                                    pricePerServing={e.pricePerServing}
                                                     title={e.title}
                                                     minutes={e.minutes}
                                                     img={e.image}

@@ -13,7 +13,7 @@ export default function CreateRecipe() {
         summary: "",
         healthScore: "",
         minutes: "",
-        spoonacularScore: "",
+        pricePerServing: "",
         stepsOne: '',
         stepsTwo: '',
         stepsThree: '',
@@ -28,7 +28,7 @@ export default function CreateRecipe() {
         summary: "Invalid Summary, please use at least one letter at the beginning",
         healthScore: "Invalid Health Score, please write a number between 0 and 100",
         minutes: "Invalid Minutes, please write a number",
-        spoonacularScore: "Invalid Score, please write a number between 0 and 100",
+        pricePerServing: "Invalid Score, please write a number between 0 and 1000",
         steps: "Invalid Steps, please write use at least one letter at the beginning",
         diets: "Invalid Diets, select one or more diets",
         image: "Invalid Image, please upload a image",
@@ -40,7 +40,7 @@ export default function CreateRecipe() {
             summary: "Invalid Summary, please use at least one letter at the beginning",
             healthScore: "Invalid Health Score, please write a number between 0 and 100",
             minutes: "Invalid Minutes, please write a number",
-            spoonacularScore: "Invalid Score, please write a number between 0 and 100",
+            pricePerServing: "Invalid Score, please write a number between 0 and 1000",
             steps: "Invalid Steps, please write use at least one letter at the beginning",
             diets: "Invalid Diets, select one or more diets",
             image: "Invalid Image, please upload a image",
@@ -62,8 +62,8 @@ export default function CreateRecipe() {
         if (typeof parseInt(input.minutes) === 'number' && input.minutes.trim().length > 0) {
             delete errorData.minutes;
         }
-        if (parseInt(input.spoonacularScore) >= 0 && parseInt(input.spoonacularScore) <= 100) {
-            delete errorData.spoonacularScore;
+        if (parseInt(input.pricePerServing) >= 0 && parseInt(input.pricePerServing) <= 1000) {
+            delete errorData.pricePerServing;
         }
         if ((typeof input.stepsOne === 'string' && input.stepsOne.trim().length > 0) ||
         (typeof input.stepsTwo === 'string' && input.stepsTwo.trim().length > 0) ||

@@ -91,13 +91,13 @@ const recipeControllers = {
         }
     },
     postRecipe: async (req, res, next) => {
-        const { title, healthScore, spoonacularScore, image, summary, steps, minutes, diets } = req.body;
+        const { title, healthScore, pricePerServing, image, summary, steps, minutes, diets } = req.body;
         try {
             let newRecipe = await Recipe.create({
                 title,
                 healthScore,
                 minutes,
-                spoonacularScore,
+                pricePerServing,
                 image,
                 summary,
                 steps
@@ -119,6 +119,7 @@ const recipeControllers = {
     allToDb: async (req, res, next) => {
         try {
             let allRecipesFromApi = await getAllRecipeForApi();
+            console.log(allRecipesFromApi)
             allRecipesFromApi.map(async (element) => {
                 let steps = element.analyzedInstructions[0]?.steps.map(e => e.step);
                 let diet = element.diets;
@@ -126,7 +127,7 @@ const recipeControllers = {
                     title: element.title,
                     healthScore: element.healthScore,
                     minutes: element.readyInMinutes,
-                    spoonacularScore: element.spoonacularScore,
+                    pricePerServing: Math.trunc(element.pricePerServing),
                     image: element.image,
                     summary: element.summary,
                     steps: steps,

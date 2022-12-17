@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    spoonacularScore: {
+    pricePerServing: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

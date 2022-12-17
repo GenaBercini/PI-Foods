@@ -25,7 +25,7 @@ export default function CreateRecipeSecond({ setInput, input, error, setError, v
             input.title &&
             input.summary &&
             input.healthScore &&
-            input.spoonacularScore &&
+            input.pricePerServing &&
             input.diets &&
             input.steps &&
             input.image &&
@@ -37,7 +37,7 @@ export default function CreateRecipeSecond({ setInput, input, error, setError, v
                 summary: "",
                 healthScore: "",
                 minutes: "",
-                spoonacularScore: "",
+                pricePerServing: "",
                 stepsOne: '',
                 stepsTwo: '',
                 stepsThree: '',

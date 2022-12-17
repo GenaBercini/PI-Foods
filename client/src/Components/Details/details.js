@@ -54,7 +54,7 @@ export class DetailRecipe extends React.Component {
                                         <p><b className={s.titleInformation}>Health Score: </b>{this.props.details.healthScore}</p>
                                     </div>
                                     <div className={s.infoContainer}>
-                                        <p><b className={s.titleInformation}>Food Score: </b>{this.props.details.spoonacularScore}</p>
+                                        <p><b className={s.titleInformation}>Price per Serving: </b>{this.props.details.pricePerServing}</p>
                                     </div>
                                     <div className={s.infoContainer}>
                                         <p><b className={s.titleInformation}>Ready: </b>in {this.props.details.minutes} minutes</p>

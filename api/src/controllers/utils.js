@@ -53,7 +53,7 @@ module.exports = {
                 minutes: response.data.readyInMinutes,
                 title: response.data.title,
                 healthScore: response.data.healthScore,
-                spoonacularScore: response.data.spoonacularScore,
+                pricePerServing: Math.trunc(response.data.pricePerServing),
                 image: response.data.image,
                 summary: response.data.summary,
                 steps: steps,

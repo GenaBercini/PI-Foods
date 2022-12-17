@@ -106,19 +106,19 @@ export default function CreateRecipeFirst({ setInput, input, error, setError, va
                             <p className={s.dangerRange}>{error.healthScore}</p>
                         </div>
                         <div className={s.rangeContainer}>
-                            <div>Score</div>
+                            <div>Price</div>
                             <input
                                 className={s.formRange}
                                 type="range"
-                                value={input.spoonacularScore}
-                                placeholder="Score"
-                                name="spoonacularScore"
+                                value={input.pricePerServing}
+                                placeholder="Price"
+                                name="pricePerServing"
                                 min='0'
-                                max='100'
+                                max='1000'
                                 step='1'
                                 onChange={onChange} />
-                            <div>{input.spoonacularScore ? input.spoonacularScore : 50}</div>
-                            <p className={s.dangerRange}>{error.spoonacularScore}</p>
+                            <div>{input.pricePerServing ? input.pricePerServing : 500}</div>
+                            <p className={s.dangerRange}>{error.pricePerServing}</p>
                         </div>
                     </div>
                     <div>

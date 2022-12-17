@@ -26,7 +26,7 @@ export default function Card(props) {
                         )) : ""
                 }
                 </div>
-                <span><b>Score: </b>{props.spoonacularScore}</span>
+                <span><b>Price per serving: </b>{props.pricePerServing}</span>
                 <span className={s.data}><b>Ready: </b>in {props.minutes} minutes</span>
                 </div>
                 <img className={s.cardImg} src={props.img} alt={props.title}/>

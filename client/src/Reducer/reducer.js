@@ -49,12 +49,12 @@ export default function foodReducer(state = initialState, action) {
         case FILTER_BY_SCORE:
             let scoreArray = action.payload === 'Lowerest' ?
             state.filtered.sort((a,b) => {
-                if(a.spoonacularScore > b.spoonacularScore) return 1;
-                if(b.spoonacularScore > a.spoonacularScore) return -1;
+                if(a.pricePerServing > b.pricePerServing) return 1;
+                if(b.pricePerServing > a.pricePerServing) return -1;
                 return 0;
             }) : state.filtered.sort((a,b) => {
-                if(a.spoonacularScore < b.spoonacularScore) return 1;
-                if(b.spoonacularScore < a.spoonacularScore) return -1;
+                if(a.pricePerServing < b.pricePerServing) return 1;
+                if(b.pricePerServing < a.pricePerServing) return -1;
                 return 0;
             });
             return {
